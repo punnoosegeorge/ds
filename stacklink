@@ -1,0 +1,102 @@
+#include<stdio.h>
+#include<stdlib.h>
+void push();
+void pop();
+void display();
+struct stack{
+int data;
+struct stack*next;
+};
+struct stack*temp,*newnode,*head=0;
+int top=0,n;
+void main()
+{
+printf("\n enter the size of the stack");
+scanf("%d",&n);
+int choice;
+printf(" stack operations using array");
+printf("\n1.PUSH\n2POP\n3.DISPLAY\n4.EXIT");
+do
+{
+printf("enter the choice\n");
+scanf("%d",&choice);
+switch(choice)
+{
+case 1:
+	{
+	push();
+	break;
+	}
+case 2:
+	{
+	pop();
+	break;
+	}
+case 3:
+	{
+	display();
+	break;
+	}
+case 4:
+	{
+	printf("exit\n");
+	break;
+	}
+default:
+	{
+	printf("\n enter a valid choice\n");
+	}
+}
+}
+while(choice!=4);
+}
+void push()
+{
+if(top==n)
+{
+printf("stack is overflow");
+}
+else
+{
+printf("enter the data");
+newnode=(struct stack *)malloc(sizeof(struct stack));
+scanf("%d",&newnode->data);
+ newnode->next=temp;
+ temp=head;
+head=newnode;
+newnode->next=temp;
+top++;
+}
+}
+void pop()
+{
+if(top==0)
+{
+printf("underflow");
+}
+else
+{
+temp=head;
+printf("poped dat is%d",head->data);
+head=temp->next;
+free(temp);
+top--;
+}
+}
+void display()
+{
+if(head==0)
+{
+printf("enter no data is present");
+}
+else
+temp=head;
+{
+printf("the datas are:");
+while(temp!=NULL)
+  {
+   printf("%d ",temp->data);
+   temp=temp->next;
+  }
+}
+}
